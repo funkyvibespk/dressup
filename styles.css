@@ -254,7 +254,6 @@
 @media(max-width:560px){.checkout-item{grid-template-columns:44px minmax(0,1fr) auto;gap:8px}.checkout-item img{width:44px;height:54px}.checkout-item b{font-size:11px}.checkout-item strong{font-size:10px}}
 .checkout-item img{height:48px}
 @media(max-width:560px){.checkout-item img{height:44px}}
-.success-email{color:#342b20;font-size:13px;text-decoration:underline;text-underline-offset:4px}
 
 .look-card .look-figure{display:none}
 .look-women{background-image:linear-gradient(180deg,#20171015 0%,transparent 45%,#201710a8 100%),url('https://images.unsplash.com/photo-1773439877255-55e63cf17b2c?auto=format&fit=crop&w=1400&q=85')}
