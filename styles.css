@@ -545,3 +545,14 @@ body.mobile-navigation-open{overflow:hidden}
   .content-modal .policy-copy,.contact-intro{font-size:13px}
   .toast{font-size:11px}
 }
+@media(min-width:761px){
+  .promise-list article{grid-template-columns:40px 1fr 28px;gap:20px;padding:26px 0}
+  .promise-list article>span{font-size:20px}
+  .promise-list h3{font-size:38px;line-height:1.05}
+  .promise-list p{font-size:22px;line-height:1.45}
+  .promise-list article>b{font-size:26px}
+  .story-copy .eyebrow{font-size:22px}
+  .story-copy>p:not(.eyebrow){font-size:26px}
+  .story-copy .story-link{font-size:22px}
+}
+.shop-note,.collection-desc{display:none!important}
