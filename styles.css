@@ -571,3 +571,9 @@ body.mobile-navigation-open{overflow:hidden}
   .footer-links a{font-size:12px}
   .footer-bottom{font-size:10px}
 }
+.footer>p{margin-top:35px}
+@media(min-width:561px){
+  .footer>p{font-size:18px}
+  .footer-links a{font-size:13px}
+  .footer-bottom{font-size:11px}
+}
