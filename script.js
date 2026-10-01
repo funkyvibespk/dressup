@@ -176,7 +176,30 @@ searchResults.addEventListener('click',e=>{
 });
 document.querySelectorAll('.search-hints button').forEach(button=>button.addEventListener('click',()=>{searchInput.value=button.textContent;document.querySelector('#search-form').requestSubmit()}));
 const mobileNav=document.querySelector('.nav-glass'),mobileToggle=document.querySelector('.mobile-toggle');function setMobileMenu(open){mobileNav.classList.toggle('mobile-open',open);document.body.classList.toggle('mobile-navigation-open',open);mobileToggle.setAttribute('aria-expanded',String(open));mobileToggle.setAttribute('aria-label',open?'Close navigation':'Open navigation')}mobileToggle.addEventListener('click',()=>setMobileMenu(!mobileNav.classList.contains('mobile-open')));document.querySelector('.mobile-menu-close').addEventListener('click',()=>setMobileMenu(false));document.querySelectorAll('.nav-glass a,.nav-glass .search-open,.nav-glass .bag-open').forEach(item=>item.addEventListener('click',()=>setMobileMenu(false)));
-document.querySelector('#newsletter-form').addEventListener('submit',async e=>{e.preventDefault();const form=e.currentTarget,input=form.querySelector('input[type="email"]'),button=form.querySelector('button'),note=document.querySelector('.newsletter-note'),address=input.value.trim();button.disabled=true;note.textContent='Sending your subscription…';try{const response=await fetch('https://formsubmit.co/ajax/funkyvibespk@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({email:address,_subject:'New subscription for goodies',message:`Please add ${address} to the DressUp newsletter.`})});const result=await response.json();if(!response.ok||result.success===false)throw new Error(result.message||'Unable to send subscription');note.textContent='Thank you — your subscription request was sent. If this is the first one, confirm the activation email in the DressUp inbox.';form.reset()}catch(error){note.textContent='We couldn’t send that just now. Please try again shortly.'}finally{button.disabled=false}});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeProduct();closeBag();closeSearch();closeCheckout();closeContentModal();setMobileMenu(false)}});
+document.querySelector('#newsletter-form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const form=e.currentTarget,input=form.querySelector('input[type="email"]'),button=form.querySelector('button'),note=document.querySelector('.newsletter-note'),address=input.value.trim();
+  button.disabled=true;note.textContent='Sending your subscription…';
+  try{
+    const response=await fetch('https://formsubmit.co/ajax/funkyvibespk@gmail.com',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        name:'DressUp Newsletter',
+        email:address,
+        _subject:'DressUp | New newsletter subscriber',
+        _template:'box',
+        message:`Please add ${address} to the DressUp newsletter.`
+      })
+    });
+    const result=await response.json();
+    if(!response.ok||result.success===false)throw new Error(result.message||'Unable to send subscription');
+    note.textContent='Thank you — your subscription request was sent. If this is the first one, confirm the activation email in the DressUp inbox.';
+    form.reset();
+  }catch(error){note.textContent='We couldn’t send that just now. Please try again shortly.'}
+  finally{button.disabled=false}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeProduct();closeBag();closeSearch();closeCheckout();closeContentModal();setMobileMenu(false)}});
 paintProducts();paintCart();
 document.querySelectorAll('[data-category-link]').forEach(link=>link.addEventListener('click',()=>{const category=link.dataset.categoryLink;currentCategory=category;searchTerm='';document.querySelectorAll('.category-tab').forEach(tab=>{const selected=tab.dataset.category===category;tab.classList.toggle('selected',selected);tab.setAttribute('aria-selected',String(selected))});paintProducts();document.querySelector('#collections').scrollIntoView({behavior:'smooth'});document.querySelector('.nav-glass').classList.remove('mobile-open')}));
 const contentBackdrop=document.querySelector('.content-backdrop');let openContent=null;function closeContentModal(){if(openContent)openContent.hidden=true;openContent=null;contentBackdrop.hidden=true;document.body.classList.remove('modal-open')}document.querySelectorAll('[data-content-modal]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();openContent=document.querySelector(link.dataset.contentModal==='shipping'?'.content-modal:not(.contact-modal)':' .contact-modal'.trim());if(!openContent)return;contentBackdrop.hidden=false;openContent.hidden=false;document.body.classList.add('modal-open')}));document.querySelectorAll('.content-close').forEach(button=>button.addEventListener('click',closeContentModal));contentBackdrop.addEventListener('click',closeContentModal);
