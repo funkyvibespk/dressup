@@ -319,3 +319,15 @@ body.mobile-navigation-open{overflow:hidden}
 .bag-row .bag-row-controls button[data-cart-qty]:hover{background:#29251f;color:#fff}
 .bag-row-controls>span{min-width:15px;text-align:center;font-size:10px;font-weight:700}
 .bag-row .bag-row-controls button[data-remove]{margin-left:5px;padding:3px 0;font-size:8px}
+@media(max-width:560px){
+  .hero-glass{left:9%;right:9%;width:auto;min-height:0;padding:30px 22px 40px;transform:translateY(-40%);background:rgba(242,238,229,.7)}
+  .hero-glass .eyebrow{margin-bottom:13px}
+  .hero-glass h1{font-size:clamp(39px,10vw,50px);line-height:.9;margin-bottom:16px}
+  .hero-glass>p{font-size:11px;line-height:1.65;margin-bottom:17px}
+  .hero-cta{height:42px}
+  .hero-index{left:22px;bottom:13px}
+}@media(max-width:560px){
+  .hero-glass{text-align:center}
+  .hero-glass>p{margin-left:auto;margin-right:auto}
+  .hero-index{left:50%;transform:translateX(-50%);white-space:nowrap}
+}
