@@ -557,6 +557,7 @@ body.mobile-navigation-open{overflow:hidden}
   .story-copy .story-link{font-size:20px}
 }
 .shop-note,.collection-desc{display:none!important}
+.story-copy .eyebrow,.newsletter>.eyebrow{letter-spacing:.12em}
 @media(max-width:560px){
   .newsletter>.eyebrow{font-size:16px}
   .newsletter>p:not(.eyebrow){font-size:18px}
