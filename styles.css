@@ -593,3 +593,21 @@ body.mobile-navigation-open{overflow:hidden}
 @media(max-width:560px){
   .story-copy .eyebrow,.promise .eyebrow,.shop .eyebrow{font-size:12px;letter-spacing:.12em}
 }
+.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.contact-modal{width:min(820px,92vw);background:rgba(244,238,229,.97);border:1px solid rgba(255,255,255,.78);backdrop-filter:blur(18px) saturate(1.08);-webkit-backdrop-filter:blur(18px) saturate(1.08)}
+.contact-modal form{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.contact-modal .contact-full-field{grid-column:1/-1}
+.contact-modal input,.contact-modal textarea{border:1px solid #ad9d87;border-radius:999px;background:rgba(255,255,255,.46);padding:14px 20px;color:var(--ink);font:400 15px/1.4 var(--sans);transition:border-color .2s,box-shadow .2s,background-color .2s}
+.contact-modal input{height:50px}
+.contact-modal textarea{min-height:132px;border-radius:23px;padding:16px 20px;resize:vertical}
+.contact-modal input::placeholder,.contact-modal textarea::placeholder{color:#7b6b57;opacity:1;letter-spacing:.06em}
+.contact-modal input:focus,.contact-modal textarea:focus{border-color:#9c8056;background:rgba(255,255,255,.72);box-shadow:0 0 0 3px rgba(156,128,86,.13);outline:0}
+.contact-modal .contact-submit{display:inline-flex;align-items:center;justify-content:center;gap:16px;justify-self:start;width:auto;height:48px;padding:0 28px;border:1px solid #29251f;border-radius:999px;background:#29251f;color:#f8f2e8;font-size:12px;letter-spacing:.08em;transition:background-color .2s,color .2s,transform .2s}
+.contact-modal .contact-submit:hover{background:#aa8b5f;border-color:#aa8b5f;color:#201d19;transform:translateY(-1px)}
+.contact-modal .contact-email{margin-top:20px}
+@media(max-width:560px){
+  .contact-modal form{grid-template-columns:1fr;gap:12px;margin-top:20px}
+  .contact-modal .contact-full-field{grid-column:auto}
+  .contact-modal input,.contact-modal textarea{font-size:16px}
+  .contact-modal .contact-submit{height:46px}
+}
