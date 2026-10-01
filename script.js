@@ -155,7 +155,7 @@ document.querySelector('#order-form').addEventListener('submit',async e=>{
 });
 const searchInput=document.querySelector('#search-form input'),searchResults=document.querySelector('#search-results');
 document.querySelector('.search-open').addEventListener('click',()=>{document.body.classList.add('search-state');document.querySelector('.search-panel').setAttribute('aria-hidden','false');renderSearchResults(searchInput.value.trim());setTimeout(()=>searchInput.focus(),100)});
-function closeSearch(){document.body.classList.remove('search-state');document.querySelector('.search-panel').setAttribute('aria-hidden','true')}
+function closeSearch(){document.body.classList.remove('search-state');document.querySelector('.search-panel').setAttribute('aria-hidden','true');searchInput.value='';renderSearchResults('')}
 function showSearchCollection(){document.querySelector('#collections').scrollIntoView({behavior:'smooth'})}
 document.querySelector('.search-close').addEventListener('click',closeSearch);
 searchInput.addEventListener('input',()=>renderSearchResults(searchInput.value.trim()));

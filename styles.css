@@ -414,6 +414,8 @@ body.mobile-navigation-open{overflow:hidden}
   .search-product-card strong{font-size:10px}
 }
 @media(max-width:760px){
+  .search-panel{z-index:90;background:rgba(242,236,227,.98)}
+  .search-panel .search-close{top:calc(env(safe-area-inset-top,0px) + 14px);right:5%;z-index:3}
   .modal-backdrop{z-index:90}
   .product-modal{z-index:91}
 }
