@@ -239,8 +239,8 @@
 .checkout-modal.order-confirmed .order-success>span{font-size:28px;color:#a8875b}
 .checkout-modal.order-confirmed .order-success h3{font:500 clamp(30px,5vw,42px)/1.1 var(--serif);margin:0}
 .checkout-modal.order-confirmed .tracking-number{display:grid;gap:7px;margin:8px 0}
-.checkout-modal.order-confirmed .tracking-number span{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#786b59}
-.checkout-modal.order-confirmed .tracking-number strong{font:600 clamp(30px,5vw,42px)/1 var(--sans);letter-spacing:.05em;color:#27231e}
+.checkout-modal.order-confirmed .tracking-number span{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#786b59;font-weight:700}
+.checkout-modal.order-confirmed .tracking-number strong{font:700 clamp(30px,5vw,42px)/1 var(--sans);letter-spacing:.05em;color:#27231e}
 .checkout-modal.order-confirmed .tracking-note{max-width:400px;margin:0;color:#a13d32;font-size:15px;line-height:1.6;font-weight:600}
 .checkout-modal.order-confirmed .success-close{margin-top:9px;padding:12px 24px;font-size:13px}
 @media(max-width:560px){.checkout-modal.order-confirmed{padding:42px 24px}.checkout-modal.order-confirmed .tracking-note{font-size:13px}}
