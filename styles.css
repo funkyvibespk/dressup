@@ -362,3 +362,8 @@ body.mobile-navigation-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.loading-ring,.loading-star,.loading-spark-one,.loading-spark-two{animation:none}}
 .hero-copy-mobile{display:none}
 @media(max-width:560px){.hero-copy-full{display:none}.hero-copy-mobile{display:inline}}
+@media(max-width:560px){
+  .hero-glass>p,.hero-index{display:none}
+  .hero-glass{padding-bottom:20px}
+  .hero-glass h1{margin-bottom:18px}
+}
