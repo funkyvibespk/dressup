@@ -546,13 +546,20 @@ body.mobile-navigation-open{overflow:hidden}
   .toast{font-size:11px}
 }
 @media(min-width:761px){
-  .promise-list article{grid-template-columns:40px 1fr 28px;gap:20px;padding:26px 0}
-  .promise-list article>span{font-size:20px}
-  .promise-list h3{font-size:38px;line-height:1.05}
-  .promise-list p{font-size:22px;line-height:1.45}
-  .promise-list article>b{font-size:26px}
+  .promise-list article{grid-template-columns:32px 1fr 24px;gap:16px;padding:22px 0}
+  .promise-list article>span{font-size:14px}
+  .promise-list h3{font-size:32px;line-height:1.05}
+  .promise-list p{font-size:18px;line-height:1.45}
+  .promise-list article>b{font-size:22px}
   .story-copy .eyebrow{font-size:22px}
   .story-copy>p:not(.eyebrow){font-size:26px}
   .story-copy .story-link{font-size:22px}
 }
 .shop-note,.collection-desc{display:none!important}
+@media(max-width:560px){
+  .newsletter>.eyebrow{font-size:16px}
+  .newsletter>p:not(.eyebrow){font-size:18px}
+  .newsletter input{font-size:18px}
+  .newsletter form button{font-size:16px}
+  .newsletter-note{font-size:14px}
+}
