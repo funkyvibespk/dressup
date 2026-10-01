@@ -29,7 +29,7 @@ const productSearchTags={
 };
 let currentCategory='women',currentProduct=null,cart=JSON.parse(localStorage.getItem('dressup-bag')||'[]'),searchTerm='',toastTimer;
 function normalizeSearch(value){return value.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
-function searchWordsMatch(query,text){const words=normalizeSearch(query).split(' ').filter(word=>word.length>1),available=normalizeSearch(text).split(' ');return words.length>0&&words.every(word=>available.some(candidate=>candidate.startsWith(word)||word.startsWith(candidate)))}
+function searchWordsMatch(query,text){const words=normalizeSearch(query).split(' ').filter(word=>word.length>1),available=normalizeSearch(text).split(' ');return words.length>0&&words.every(word=>available.some(candidate=>candidate===word||(candidate.length>=3&&(candidate.startsWith(word)||word.startsWith(candidate)))))}
 function productMatchesSearch(product,query){return searchWordsMatch(query,[product.name,product.category,categoryNames[product.category],categorySearchTags[product.category].join(' '),productSearchTags[product.id].join(' '),product.occasion,product.fabric,product.color,product.badge,product.description,product.detail,product.sizes.join(' ')].join(' '))}
 function matchingSearchCategories(query){return Object.keys(categoryNames).filter(category=>categorySearchTags[category].some(tag=>searchWordsMatch(query,tag)))}
 function renderSearchResults(query=''){
