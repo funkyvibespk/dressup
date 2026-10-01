@@ -10,9 +10,55 @@ const products=[
 {id:'c3',category:'children',name:'Noor Little Waistcoat Set',price:10900,occasion:'Wedding · Eid',fabric:'Cotton kurta · woven waistcoat',color:'Ivory & gold',badge:'Mini formal',image:'https://images.unsplash.com/photo-1503919005314-30d93d07d823?auto=format&fit=crop&w=1100&q=88',description:'A mini formal look with an ivory cotton kurta and a lightweight woven waistcoat. Gold-toned buttons and neat finishing make it picture-ready and still easy to wear.',sizes:['2–3Y','4–5Y','6–7Y','8–9Y','10–11Y'],detail:'2-piece set · Breathable cotton · Soft inner seams'}
 ];
 const categoryCopy={women:{count:'01 / 03',title:'For her, in bloom.',description:'Hand-finished details. Beautifully breathable fabrics. Occasionwear that feels like you.'},men:{count:'02 / 03',title:'For him, with distinction.',description:'Modern Pakistani menswear with thoughtful tailoring and tradition in every detail.'},children:{count:'03 / 03',title:'For little, big moments.',description:'Celebration-ready pieces with soft linings, easy fits, and room to play.'}};
-const categoryNames={women:'Women',men:'Men',children:'Children'};let currentCategory='women',currentProduct=null,cart=JSON.parse(localStorage.getItem('dressup-bag')||'[]'),searchTerm='',toastTimer;
+const categoryNames={women:'Women',men:'Men',children:'Children'};
+const categorySearchTags={
+  women:['women','woman','womenswear','women’s wear','women wear','ladies','ladieswear','lady','female clothing','for her','girls wear','clothes for women'],
+  men:['men','man','menswear','men’s wear','men wear','gents','gentlemen','male clothing','for him','clothes for men'],
+  children:['children','child','children’s wear','childrenswear','kids','kid','kidswear','boys','girls','toddler','little ones','for kids','children clothing']
+};
+const productSearchTags={
+  w1:['peshwas','peshawaz','dress','formal dress','women suit','ladies suit','chiffon','dupatta','embroidered','floral','wedding outfit','three piece'],
+  w2:['anarkali','nikkah','nikah','raw silk','zari','organza','formal dress','wedding suit','dupatta','embroidery'],
+  w3:['lawn','lawn suit','summer suit','daywear','printed suit','cotton','eid suit','three piece'],
+  m1:['kurta','kameez','shalwar kameez','mens kurta','embroidered kurta','eid clothes','cotton'],
+  m2:['waistcoat','vest','jacquard','kurta set','wedding outfit','mens formal','traditional wear'],
+  m3:['shalwar kameez','casual kurta','everyday clothes','cotton outfit','eid clothes'],
+  c1:['kids dress','girls dress','mini peshwas','eid clothes','children formal','party dress','twirl'],
+  c2:['kids kurta','boys kurta','kurta pajama','kids outfit','jacquard','family wear','eid clothes'],
+  c3:['kids waistcoat','boys formal','kids kurta set','wedding wear','ivory gold']
+};
+let currentCategory='women',currentProduct=null,cart=JSON.parse(localStorage.getItem('dressup-bag')||'[]'),searchTerm='',toastTimer;
+function normalizeSearch(value){return value.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+function searchWordsMatch(query,text){const words=normalizeSearch(query).split(' ').filter(word=>word.length>1),available=normalizeSearch(text).split(' ');return words.length>0&&words.every(word=>available.some(candidate=>candidate.startsWith(word)||word.startsWith(candidate)))}
+function productMatchesSearch(product,query){return searchWordsMatch(query,[product.name,product.category,categoryNames[product.category],categorySearchTags[product.category].join(' '),productSearchTags[product.id].join(' '),product.occasion,product.fabric,product.color,product.badge,product.description,product.detail,product.sizes.join(' ')].join(' '))}
+function matchingSearchCategories(query){return Object.keys(categoryNames).filter(category=>categorySearchTags[category].some(tag=>searchWordsMatch(query,tag)))}
+function renderSearchResults(query=''){
+  const results=document.querySelector('#search-results');
+  const categories=query?matchingSearchCategories(query):Object.keys(categoryNames);
+  const matches=query?products.filter(product=>productMatchesSearch(product,query)):[];
+  let content='';
+  if(categories.length){
+    const labels={women:'Women’s wear',men:'Men’s wear',children:'Children’s wear'};
+    content+=`<section class="search-results-group"><h2 class="search-results-title">${query?'Related categories':'Browse by category'}</h2><div class="search-category-grid">${categories.map(category=>{const product=products.find(item=>item.category===category);const count=products.filter(item=>item.category===category).length;return `<button class="search-category-card" type="button" data-search-category="${category}" aria-label="Shop ${labels[category]}"><img src="${product.image.replace(/w=\d+/,'w=320')}" alt="" loading="lazy"><span><strong>${labels[category]}</strong><small>${count} occasion styles</small></span></button>`}).join('')}</div></section>`;
+  }
+  if(matches.length){
+    content+=`<section class="search-results-group"><h2 class="search-results-title">Outfit matches <small>${matches.length}</small></h2><div class="search-product-grid">${matches.map(product=>`<button class="search-product-card" type="button" data-search-product="${product.id}"><img src="${product.image.replace(/w=\d+/,'w=280')}" alt="" loading="lazy"><span><strong>${product.name}</strong><small>${categoryNames[product.category]} · ${product.occasion} · PKR ${money(product.price)}</small></span><b aria-hidden="true">↗</b></button>`).join('')}</div></section>`;
+  }
+  if(query&&!categories.length&&!matches.length)content='<p class="search-empty">No matching styles yet. Try a category, fabric, occasion, or outfit name.</p>';
+  results.innerHTML=content;
+}
 const grid=document.querySelector('.product-grid'),toast=document.querySelector('.toast'),money=n=>Number(n).toLocaleString('en-PK');
-function paintProducts(){const list=products.filter(p=>p.category===currentCategory&&(!searchTerm||`${p.name} ${p.occasion} ${p.fabric} ${p.color} ${p.description}`.toLowerCase().includes(searchTerm)));const copy=categoryCopy[currentCategory];document.querySelector('.collection-count').textContent=copy.count;document.querySelector('.collection-title').innerHTML=copy.title.replace(/,? /,' <em>').replace(/\.$/,'</em>');document.querySelector('.collection-desc').textContent=copy.description;grid.innerHTML=list.length?list.map((p,i)=>`<article class="product-card" style="animation-delay:${i*70}ms"><div class="product-photo" role="button" tabindex="0" aria-label="View ${p.name}" style="background-image:url('${p.image}')" data-view="${p.id}"><span class="product-badge">${p.badge}</span><span class="view-details">Discover the details <b>↗</b></span></div><div class="product-data"><div class="product-top"><div><h3>${p.name}</h3><p>${p.occasion} · ${p.fabric.split(' · ')[0]}</p></div><span class="price">PKR ${money(p.price)}</span></div><div class="product-detail-line">${p.color} <span>·</span> Sizes ${p.sizes[0]}–${p.sizes[p.sizes.length-1]}</div><div class="product-foot"><span class="color-dots"><i style="--dot:${p.category==='women'?'#aa7069':p.category==='men'?'#343c50':'#7a8061'}"></i><i style="--dot:#c6ad82"></i><i style="--dot:#e5dccc"></i></span><button class="open-product" data-view="${p.id}">View full details ↗</button></div></div></article>`).join(''):`<div class="no-results">No ${categoryNames[currentCategory].toLowerCase()} pieces match that search. <button class="clear-search">Show all pieces</button></div>`;}
+function paintProducts(){
+  const source=currentCategory==='all'?products:products.filter(product=>product.category===currentCategory);
+  const list=source.filter(product=>!searchTerm||productMatchesSearch(product,searchTerm));
+  const copy=currentCategory==='all'?{count:`${list.length} MATCHES`,title:'Search results.',description:`Outfits matching “${searchTerm}”.`}:categoryCopy[currentCategory];
+  document.querySelectorAll('.category-tab').forEach(tab=>{const selected=tab.dataset.category===currentCategory;tab.classList.toggle('selected',selected);tab.setAttribute('aria-selected',String(selected))});
+  document.querySelector('.collection-count').textContent=copy.count;
+  document.querySelector('.collection-title').innerHTML=copy.title.replace(/,? /,' <em>').replace(/\.$/,'</em>');
+  document.querySelector('.collection-desc').textContent=copy.description;
+  const scope=currentCategory==='all'?'outfits':`${categoryNames[currentCategory].toLowerCase()} pieces`;
+  grid.innerHTML=list.length?list.map((p,i)=>`<article class="product-card" style="animation-delay:${i*70}ms"><div class="product-photo" role="button" tabindex="0" aria-label="View ${p.name}" style="background-image:url('${p.image}')" data-view="${p.id}"><span class="product-badge">${p.badge}</span><span class="view-details">Discover the details <b>↗</b></span></div><div class="product-data"><div class="product-top"><div><h3>${p.name}</h3><p>${p.occasion} · ${p.fabric.split(' · ')[0]}</p></div><span class="price">PKR ${money(p.price)}</span></div><div class="product-detail-line">${p.color} <span>·</span> Sizes ${p.sizes[0]}–${p.sizes[p.sizes.length-1]}</div><div class="product-foot"><span class="color-dots"><i style="--dot:${p.category==='women'?'#aa7069':p.category==='men'?'#343c50':'#7a8061'}"></i><i style="--dot:#c6ad82"></i><i style="--dot:#e5dccc"></i></span><button class="open-product" data-view="${p.id}">View full details ↗</button></div></div></article>`).join(''):`<div class="no-results">No ${scope} match that search. <button class="clear-search">Show all pieces</button></div>`;
+}
 function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2400)}
 document.querySelectorAll('.category-tab').forEach(button=>button.addEventListener('click',()=>{currentCategory=button.dataset.category;searchTerm='';document.querySelectorAll('.category-tab').forEach(t=>{t.classList.toggle('selected',t===button);t.setAttribute('aria-selected',String(t===button))});paintProducts()}));
 grid.addEventListener('click',e=>{if(e.target.closest('.clear-search')){searchTerm='';paintProducts();return}const view=e.target.closest('[data-view]');if(view)openProduct(view.dataset.view)});grid.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-view]')){e.preventDefault();openProduct(e.target.dataset.view)}});
@@ -107,7 +153,28 @@ document.querySelector('#order-form').addEventListener('submit',async e=>{
     button.textContent=originalLabel;
   }
 });
-document.querySelector('.search-open').addEventListener('click',()=>{document.body.classList.add('search-state');document.querySelector('.search-panel').setAttribute('aria-hidden','false');setTimeout(()=>document.querySelector('#search-form input').focus(),100)});function closeSearch(){document.body.classList.remove('search-state');document.querySelector('.search-panel').setAttribute('aria-hidden','true')}document.querySelector('.search-close').addEventListener('click',closeSearch);document.querySelector('#search-form').addEventListener('submit',e=>{e.preventDefault();searchTerm=e.currentTarget.querySelector('input').value.trim().toLowerCase();closeSearch();paintProducts();document.querySelector('#collections').scrollIntoView({behavior:'smooth'})});document.querySelectorAll('.search-hints button').forEach(b=>b.addEventListener('click',()=>{document.querySelector('#search-form input').value=b.textContent;document.querySelector('#search-form').requestSubmit()}));
+const searchInput=document.querySelector('#search-form input'),searchResults=document.querySelector('#search-results');
+document.querySelector('.search-open').addEventListener('click',()=>{document.body.classList.add('search-state');document.querySelector('.search-panel').setAttribute('aria-hidden','false');renderSearchResults(searchInput.value.trim());setTimeout(()=>searchInput.focus(),100)});
+function closeSearch(){document.body.classList.remove('search-state');document.querySelector('.search-panel').setAttribute('aria-hidden','true')}
+function showSearchCollection(){document.querySelector('#collections').scrollIntoView({behavior:'smooth'})}
+document.querySelector('.search-close').addEventListener('click',closeSearch);
+searchInput.addEventListener('input',()=>renderSearchResults(searchInput.value.trim()));
+document.querySelector('#search-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const query=searchInput.value.trim();
+  if(!query){renderSearchResults('');return}
+  const categories=matchingSearchCategories(query);
+  if(categories.length===1){currentCategory=categories[0];searchTerm=''}
+  else{currentCategory='all';searchTerm=query}
+  closeSearch();paintProducts();showSearchCollection();
+});
+searchResults.addEventListener('click',e=>{
+  const category=e.target.closest('[data-search-category]');
+  if(category){currentCategory=category.dataset.searchCategory;searchTerm='';searchInput.value='';closeSearch();paintProducts();showSearchCollection();return}
+  const result=e.target.closest('[data-search-product]');
+  if(result){const product=products.find(item=>item.id===result.dataset.searchProduct);if(!product)return;currentCategory=product.category;searchTerm='';searchInput.value='';closeSearch();paintProducts();openProduct(product.id)}
+});
+document.querySelectorAll('.search-hints button').forEach(button=>button.addEventListener('click',()=>{searchInput.value=button.textContent;document.querySelector('#search-form').requestSubmit()}));
 const mobileNav=document.querySelector('.nav-glass'),mobileToggle=document.querySelector('.mobile-toggle');function setMobileMenu(open){mobileNav.classList.toggle('mobile-open',open);document.body.classList.toggle('mobile-navigation-open',open);mobileToggle.setAttribute('aria-expanded',String(open));mobileToggle.setAttribute('aria-label',open?'Close navigation':'Open navigation')}mobileToggle.addEventListener('click',()=>setMobileMenu(!mobileNav.classList.contains('mobile-open')));document.querySelector('.mobile-menu-close').addEventListener('click',()=>setMobileMenu(false));document.querySelectorAll('.nav-glass a,.nav-glass .search-open,.nav-glass .bag-open').forEach(item=>item.addEventListener('click',()=>setMobileMenu(false)));
 document.querySelector('#newsletter-form').addEventListener('submit',async e=>{e.preventDefault();const form=e.currentTarget,input=form.querySelector('input[type="email"]'),button=form.querySelector('button'),note=document.querySelector('.newsletter-note'),address=input.value.trim();button.disabled=true;note.textContent='Sending your subscription…';try{const response=await fetch('https://formsubmit.co/ajax/funkyvibespk@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({email:address,_subject:'New subscription for goodies',message:`Please add ${address} to the DressUp newsletter.`})});const result=await response.json();if(!response.ok||result.success===false)throw new Error(result.message||'Unable to send subscription');note.textContent='Thank you — your subscription request was sent. If this is the first one, confirm the activation email in the DressUp inbox.';form.reset()}catch(error){note.textContent='We couldn’t send that just now. Please try again shortly.'}finally{button.disabled=false}});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeProduct();closeBag();closeSearch();closeCheckout();closeContentModal();setMobileMenu(false)}});
 paintProducts();paintCart();
