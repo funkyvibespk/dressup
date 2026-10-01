@@ -581,11 +581,11 @@ body.mobile-navigation-open{overflow:hidden}
   .footer-bottom{font-size:11px}
 }
 @media(min-width:761px){
-  .story-copy .eyebrow,.promise .eyebrow{font-size:18px;letter-spacing:.12em}
+  .story-copy .eyebrow,.promise .eyebrow,.shop .eyebrow{font-size:18px;letter-spacing:.12em}
 }
 @media(min-width:561px) and (max-width:760px){
-  .story-copy .eyebrow,.promise .eyebrow{font-size:11px;letter-spacing:.12em}
+  .story-copy .eyebrow,.promise .eyebrow,.shop .eyebrow{font-size:11px;letter-spacing:.12em}
 }
 @media(max-width:560px){
-  .story-copy .eyebrow,.promise .eyebrow{font-size:12px;letter-spacing:.12em}
+  .story-copy .eyebrow,.promise .eyebrow,.shop .eyebrow{font-size:12px;letter-spacing:.12em}
 }
