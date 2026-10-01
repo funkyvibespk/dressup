@@ -563,3 +563,11 @@ body.mobile-navigation-open{overflow:hidden}
   .newsletter form button{font-size:16px}
   .newsletter-note{font-size:14px}
 }
+.footer>p{font-size:16px}
+.footer-links a{font-size:12px}
+.footer-bottom{font-size:10px}
+@media(max-width:560px){
+  .footer>p{font-size:15px}
+  .footer-links a{font-size:12px}
+  .footer-bottom{font-size:10px}
+}
