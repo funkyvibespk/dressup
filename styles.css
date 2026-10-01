@@ -314,3 +314,8 @@ body.mobile-navigation-open{overflow:hidden}
   .story-copy h2{display:none}
   .story-label{position:static;order:2;display:block;margin:7px 8% 0;color:#fff;text-shadow:0 1px 5px #222;font-size:7px}
 }
+.bag-row-controls{display:flex;align-items:center;gap:7px;margin-top:7px}
+.bag-row .bag-row-controls button[data-cart-qty]{display:grid;place-items:center;width:25px;height:25px;padding:0;border:1px solid #b9a98f;border-radius:50%;background:rgba(255,255,255,.55);text-decoration:none;font-size:14px;line-height:1;cursor:pointer}
+.bag-row .bag-row-controls button[data-cart-qty]:hover{background:#29251f;color:#fff}
+.bag-row-controls>span{min-width:15px;text-align:center;font-size:10px;font-weight:700}
+.bag-row .bag-row-controls button[data-remove]{margin-left:5px;padding:3px 0;font-size:8px}
