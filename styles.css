@@ -435,3 +435,113 @@ body.mobile-navigation-open{overflow:hidden}
   .newsletter form button{font-size:18px}
   .newsletter-note{font-size:16px}
 }
+/* Improve supporting-copy legibility without changing display or section headings. */
+@media(min-width:561px){
+  .eyebrow{font-size:11px}
+  .nav-glass a,.nav-glass button{font-size:12px}
+  .hero-kicker,.hero-caption,.scroll-down{font-size:10px}
+  .hero-glass>p{font-size:14px}
+  .hero-cta{font-size:11px}
+  .hero-index{font-size:10px}
+  .marquee div{font-size:10px}
+  .shop-note{font-size:16px}
+  .category-tab{font-size:18px}
+  .category-tab sup,.collection-count{font-size:10px}
+  .collection-desc{font-size:12px}
+  .product-badge{font-size:9px}
+  .view-details{font-size:11px}
+  .product-top p{font-size:10px}
+  .price{font-size:12px}
+  .product-detail-line{font-size:10px}
+  .open-product{font-size:10px}
+  .story-copy>p:not(.eyebrow){font-size:13px}
+  .story-link,.story-label{font-size:11px}
+  .promise-list article>span{font-size:10px}
+  .promise-list p{font-size:11px}
+  .footer-links a{font-size:10px}
+  .footer-bottom{font-size:9px}
+  .modal-description{font-size:13px}
+  .detail-meta,.size-label,.cod-message{font-size:11px}
+  .shipping-note{font-size:10px}
+  .search-hints{font-size:10px}
+  .search-hints button{font-size:11px}
+  .search-product-card small{font-size:10px}
+  .bag-row,.bag-row p{font-size:11px}
+  .bag-row button{font-size:10px}
+  .drawer-footer>p,.drawer-footer>small{font-size:10px}
+  .checkout-intro{font-size:12px}
+  .checkout-modal label,.checkout-modal input,.checkout-modal textarea,.checkout-modal select{font-size:11px}
+  .newsletter-note{font-size:16px}
+  .content-modal .policy-copy,.contact-intro{font-size:13px}
+  .toast{font-size:11px}
+}
+@media(max-width:560px){
+  .shop-note{font-size:17px}
+  .category-tab{font-size:19px}
+  .category-tab sup,.collection-count{font-size:10px}
+  .collection-desc{font-size:14px}
+  .product-badge{font-size:9px}
+  .view-details{font-size:10px}
+  .product-top p{font-size:9px}
+  .price{font-size:11px}
+  .product-detail-line{font-size:10px}
+  .open-product{font-size:10px}
+  .story-copy>p:not(.eyebrow){font-size:13px}
+  .story-copy .eyebrow,.promise .eyebrow{font-size:11px}
+  .story-link{font-size:11px}
+  .promise-list article>span,.promise-list p{font-size:11px}
+  .footer-links a{font-size:10px}
+  .footer-bottom{font-size:8px}
+  .modal-description{font-size:12px}
+  .detail-meta,.size-label,.cod-message{font-size:10px}
+  .shipping-note{font-size:10px}
+  .search-hints{font-size:9px}
+  .search-hints button{font-size:10px}
+  .search-product-card small{font-size:9px}
+  .bag-row,.bag-row p{font-size:10px}
+  .bag-row button{font-size:9px}
+  .drawer-footer>p,.drawer-footer>small{font-size:9px}
+  .checkout-intro{font-size:12px}
+  .checkout-modal label,.checkout-modal input,.checkout-modal textarea,.checkout-modal select{font-size:11px}
+  .newsletter-note{font-size:16px}
+  .content-modal .policy-copy,.contact-intro{font-size:12px}
+  .toast{font-size:10px}
+}
+@media(max-width:560px){
+  .eyebrow{font-size:11px}
+  .hero-cta{font-size:9px}
+  .marquee div{font-size:11px}
+  .shop-note{font-size:18px}
+  .category-tab{font-size:20px}
+  .category-tab sup,.collection-count{font-size:11px}
+  .collection-desc{font-size:15px}
+  .product-badge{font-size:10px}
+  .view-details{font-size:11px}
+  .product-top p{font-size:10px}
+  .price{font-size:12px}
+  .product-detail-line{font-size:11px}
+  .open-product{font-size:11px}
+  .look-number{font-size:8px}
+  .look-glass span,.look-glass small{font-size:8px}
+  .story-copy>p:not(.eyebrow){font-size:14px}
+  .story-copy .eyebrow,.promise .eyebrow{font-size:12px}
+  .story-link{font-size:12px}
+  .promise-list article>span,.promise-list p{font-size:12px}
+  .footer>p{font-size:15px}
+  .footer-links a{font-size:11px}
+  .footer-bottom{font-size:9px}
+  .modal-description{font-size:13px}
+  .detail-meta,.size-label,.cod-message{font-size:11px}
+  .shipping-note{font-size:11px}
+  .search-hints{font-size:10px}
+  .search-hints button{font-size:11px}
+  .search-product-card small{font-size:10px}
+  .bag-row,.bag-row p{font-size:11px}
+  .bag-row button{font-size:10px}
+  .drawer-footer>p,.drawer-footer>small{font-size:10px}
+  .cod-checkout{font-size:11px}
+  .checkout-intro{font-size:13px}
+  .checkout-modal label,.checkout-modal input,.checkout-modal textarea,.checkout-modal select{font-size:12px}
+  .content-modal .policy-copy,.contact-intro{font-size:13px}
+  .toast{font-size:11px}
+}
