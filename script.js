@@ -154,3 +154,23 @@ const backToTop=document.querySelector('.back-to-top');function updateBackToTop(
     if (event.pointerType === 'touch') trackPointer(event, true);
   }, { passive: true });
 })();
+(() => {
+  const loader = document.querySelector('#site-loader');
+  if (!loader) return;
+
+  const startedAt = performance.now();
+  let dismissScheduled = false;
+  function dismissLoader() {
+    if (dismissScheduled) return;
+    dismissScheduled = true;
+    const delay = Math.max(0, 650 - (performance.now() - startedAt));
+    setTimeout(() => {
+      loader.classList.add('is-hidden');
+      loader.setAttribute('aria-hidden', 'true');
+    }, delay);
+  }
+
+  if (document.readyState === 'complete') dismissLoader();
+  else window.addEventListener('load', dismissLoader, { once: true });
+  setTimeout(dismissLoader, 12000);
+})();
