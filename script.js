@@ -35,3 +35,37 @@ const contentBackdrop=document.querySelector('.content-backdrop');let openConten
 document.querySelector('#contact-form').addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));const body=`From: ${data.name} <${data.email}>\n\n${data.message}`;window.location.href=`mailto:funkyvibespk@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`});
 const phoneField=document.querySelector('#order-form input[name="phone"]');phoneField.addEventListener('input',()=>phoneField.setCustomValidity(''));phoneField.addEventListener('invalid',()=>phoneField.setCustomValidity('Invalid mobile number. Enter 11 digits using one of the accepted network prefixes.'));
 const backToTop=document.querySelector('.back-to-top');function updateBackToTop(){backToTop.classList.toggle('is-visible',window.scrollY>360)}window.addEventListener('scroll',updateBackToTop,{passive:true});backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));updateBackToTop();
+(() => {
+  const logo = document.querySelector('.brand-wordmark');
+  if (!logo || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let lastX = 0;
+  let lastY = 0;
+  let lastTime = 0;
+
+  logo.addEventListener('pointermove', event => {
+    if (event.pointerType === 'touch') return;
+    const now = performance.now();
+    const dx = event.clientX - lastX;
+    const dy = event.clientY - lastY;
+    if (now - lastTime < 28 || dx * dx + dy * dy < 64) return;
+
+    lastTime = now;
+    lastX = event.clientX;
+    lastY = event.clientY;
+
+    const bounds = logo.getBoundingClientRect();
+    const sparkle = document.createElement('span');
+    sparkle.className = 'logo-sparkle';
+    sparkle.setAttribute('aria-hidden', 'true');
+    sparkle.textContent = Math.random() > 0.45 ? '✦' : '✧';
+    sparkle.style.left = `${event.clientX - bounds.left}px`;
+    sparkle.style.top = `${event.clientY - bounds.top}px`;
+    sparkle.style.fontSize = `${5 + Math.random() * 7}px`;
+    sparkle.style.setProperty('--sparkle-drift-x', `${Math.random() * 28 - 14}px`);
+    sparkle.style.setProperty('--sparkle-drift-y', `${-12 - Math.random() * 20}px`);
+    sparkle.style.setProperty('--sparkle-duration', `${480 + Math.random() * 320}ms`);
+    logo.appendChild(sparkle);
+    sparkle.addEventListener('animationend', () => sparkle.remove(), { once: true });
+  });
+})();
