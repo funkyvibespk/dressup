@@ -612,3 +612,8 @@ body.mobile-navigation-open{overflow:hidden}
   .contact-modal input,.contact-modal textarea{font-size:16px}
   .contact-modal .contact-submit{height:46px}
 }
+.contact-modal{background:rgba(244,238,229,.82);border:1px solid rgba(255,255,255,.84);backdrop-filter:blur(24px) saturate(1.15);-webkit-backdrop-filter:blur(24px) saturate(1.15);box-shadow:0 28px 90px rgba(32,29,25,.28),inset 0 1px 0 rgba(255,255,255,.82),inset 0 0 0 1px rgba(170,139,95,.12)}
+.contact-modal form{padding:22px;border:1px solid rgba(255,255,255,.82);border-radius:24px;background:rgba(255,250,242,.42);backdrop-filter:blur(18px) saturate(1.14);-webkit-backdrop-filter:blur(18px) saturate(1.14);box-shadow:0 16px 38px rgba(63,48,29,.11),inset 0 1px 0 rgba(255,255,255,.82),inset 0 0 0 1px rgba(170,139,95,.08)}
+.contact-modal input,.contact-modal textarea{border-color:rgba(160,140,111,.52);background:rgba(255,255,255,.36);box-shadow:inset 0 1px 0 rgba(255,255,255,.72)}
+.contact-modal input:focus,.contact-modal textarea:focus{background:rgba(255,255,255,.62)}
+@media(max-width:560px){.contact-modal form{padding:16px;border-radius:20px}}
