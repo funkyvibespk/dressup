@@ -586,6 +586,10 @@ body.mobile-navigation-open{overflow:hidden}
 @media(min-width:561px) and (max-width:760px){
   .story-copy .eyebrow,.promise .eyebrow,.shop .eyebrow{font-size:11px;letter-spacing:.12em}
 }
+@media(min-width:561px){
+  .category-tab{font-size:20px}
+  .category-tab sup{font-size:11px}
+}
 @media(max-width:560px){
   .story-copy .eyebrow,.promise .eyebrow,.shop .eyebrow{font-size:12px;letter-spacing:.12em}
 }
