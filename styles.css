@@ -344,6 +344,6 @@ body.mobile-navigation-open{overflow:hidden}
   .hero-caption{display:none}
 }
 @media(min-width:561px){
-  .hero{height:100vh;min-height:min(650px,100vh)}
-  @supports(height:100svh){.hero{height:100svh;min-height:min(650px,100svh)}}
+  .hero{height:calc(100vh - 49px);min-height:min(650px,calc(100vh - 49px))}
+  @supports(height:100svh){.hero{height:calc(100svh - 49px);min-height:min(650px,calc(100svh - 49px))}}
 }
