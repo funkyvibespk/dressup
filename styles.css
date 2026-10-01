@@ -294,3 +294,9 @@ body.mobile-navigation-open{overflow:hidden}
 .brand-wordmark .brand-logo{display:block;width:100%;height:100%;object-fit:contain;max-width:none}
 @media(max-width:760px){.brand-wordmark{width:162px;height:49px}}
 @media(max-width:560px){.brand-wordmark{width:148px;height:49px}}
+
+.brand-wordmark{overflow:hidden;isolation:isolate;transition:filter .28s ease}
+.brand-wordmark::after{content: "";position:absolute;z-index:2;pointer-events:none;top:-45%;left:-55%;width:36%;height:190%;transform:translateX(-170%) skewX(-23deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.84),rgba(255,255,255,.34),transparent);filter:blur(2px);animation:logo-shine 1.7s ease-in-out infinite;animation-play-state:paused}
+.brand-wordmark:hover{filter:brightness(1.07) drop-shadow(0 0 8px #e9d5ad99)}
+.brand-wordmark:hover::after{animation-play-state:running}
+@media(prefers-reduced-motion:reduce){.brand-wordmark::after{animation:none!important}}
