@@ -551,9 +551,10 @@ body.mobile-navigation-open{overflow:hidden}
   .promise-list h3{font-size:32px;line-height:1.05}
   .promise-list p{font-size:18px;line-height:1.45}
   .promise-list article>b{font-size:22px}
-  .story-copy .eyebrow{font-size:22px}
-  .story-copy>p:not(.eyebrow){font-size:26px}
-  .story-copy .story-link{font-size:22px}
+  .story-copy{background:#ddd0bd}
+  .story-copy .eyebrow{font-size:18px}
+  .story-copy>p:not(.eyebrow){font-size:20px;line-height:1.7;color:#776b5c}
+  .story-copy .story-link{font-size:20px}
 }
 .shop-note,.collection-desc{display:none!important}
 @media(max-width:560px){
