@@ -360,3 +360,5 @@ body.mobile-navigation-open{overflow:hidden}
 @keyframes loading-pulse{50%{transform:scale(.78) rotate(30deg);opacity:.68}}
 @keyframes loading-twinkle{to{transform:scale(.45);opacity:.35}}
 @media(prefers-reduced-motion:reduce){.loading-ring,.loading-star,.loading-spark-one,.loading-spark-two{animation:none}}
+.hero-copy-mobile{display:none}
+@media(max-width:560px){.hero-copy-full{display:none}.hero-copy-mobile{display:inline}}
