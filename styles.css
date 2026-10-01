@@ -424,14 +424,14 @@ body.mobile-navigation-open{overflow:hidden}
   .checkout-modal{z-index:93;inset:0;top:0;left:0;transform:none;width:100%;max-width:none;max-height:100vh;max-height:100dvh;padding:calc(env(safe-area-inset-top,0px) + 60px) 22px max(24px,env(safe-area-inset-bottom,0px));border:0;border-radius:0;background:rgba(245,239,230,.98)}
   .checkout-modal .checkout-close{top:calc(env(safe-area-inset-top,0px) + 14px);right:5%}
 }
-.newsletter>.eyebrow{font-size:10px}
-.newsletter>p:not(.eyebrow){font-size:12px}
-.newsletter input{font-size:12px}
-.newsletter form button{font-size:11px}
-.newsletter-note{font-size:10px}
+.newsletter>.eyebrow{font-size:18px}
+.newsletter>p:not(.eyebrow){font-size:20px}
+.newsletter input{font-size:20px}
+.newsletter form button{font-size:18px}
+.newsletter-note{max-width:min(900px,92vw);margin-right:auto;margin-left:auto;font-size:16px;line-height:1.5}
 @media(max-width:560px){
-  .newsletter>p:not(.eyebrow){font-size:12px}
-  .newsletter input{font-size:12px}
-  .newsletter form button{font-size:11px}
-  .newsletter-note{font-size:10px}
+  .newsletter>p:not(.eyebrow){font-size:20px}
+  .newsletter input{font-size:20px}
+  .newsletter form button{font-size:18px}
+  .newsletter-note{font-size:16px}
 }
