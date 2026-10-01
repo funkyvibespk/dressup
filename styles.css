@@ -297,5 +297,5 @@ body.mobile-navigation-open{overflow:hidden}
 
 .brand-wordmark{overflow:hidden;isolation:isolate;filter:brightness(1.07) drop-shadow(0 0 8px #e9d5ad99);transition:filter .28s ease}
 .brand-wordmark:hover{filter:brightness(1.07) drop-shadow(0 0 15px #e9d5adcc) drop-shadow(0 0 28px #e9d5ad77)}
-.logo-sparkle{position:absolute;z-index:3;pointer-events:none;color:#f8fbff;line-height:1;text-shadow:0 0 3px #fff,0 0 8px #dce8f2;transform:translate(-50%,-50%) scale(.2);animation:logo-sparkle-flight var(--sparkle-duration,650ms) ease-out forwards}
+.cursor-sparkle{position:fixed;z-index:9999;pointer-events:none;color:#f8fbff;line-height:1;text-shadow:0 0 3px #fff,0 0 8px #dce8f2;transform:translate(-50%,-50%) scale(.2);animation:logo-sparkle-flight var(--sparkle-duration,650ms) ease-out forwards}
 @keyframes logo-sparkle-flight{0%{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(0)}18%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(35deg)}100%{opacity:0;transform:translate(calc(-50% + var(--sparkle-drift-x)),calc(-50% + var(--sparkle-drift-y))) scale(.1) rotate(120deg)}}
