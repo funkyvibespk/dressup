@@ -413,3 +413,7 @@ body.mobile-navigation-open{overflow:hidden}
   .search-product-card img{width:56px;height:58px}
   .search-product-card strong{font-size:10px}
 }
+@media(max-width:760px){
+  .modal-backdrop{z-index:90}
+  .product-modal{z-index:91}
+}
