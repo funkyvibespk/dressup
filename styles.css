@@ -299,3 +299,5 @@ body.mobile-navigation-open{overflow:hidden}
 .brand-wordmark:hover{filter:brightness(1.07) drop-shadow(0 0 15px #e9d5adcc) drop-shadow(0 0 28px #e9d5ad77)}
 .cursor-sparkle{position:fixed;z-index:9999;pointer-events:none;color:#f8fbff;line-height:1;text-shadow:0 0 3px #fff,0 0 8px #dce8f2;transform:translate(-50%,-50%) scale(.2);animation:logo-sparkle-flight var(--sparkle-duration,650ms) ease-out forwards}
 @keyframes logo-sparkle-flight{0%{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(0)}18%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(35deg)}100%{opacity:0;transform:translate(calc(-50% + var(--sparkle-drift-x)),calc(-50% + var(--sparkle-drift-y))) scale(.1) rotate(120deg)}}
+/* Glass-style depth keeps checkout legible over the page. */
+.checkout-modal{background:rgba(245,239,230,.88);border:1px solid rgba(255,255,255,.78);backdrop-filter:blur(18px) saturate(1.12);-webkit-backdrop-filter:blur(18px) saturate(1.12);box-shadow:0 24px 68px rgba(32,29,25,.3),0 7px 20px rgba(95,75,50,.15),inset 0 1px 0 rgba(255,255,255,.78),inset 0 0 0 1px rgba(170,139,95,.1)}
