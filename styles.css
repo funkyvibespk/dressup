@@ -295,6 +295,7 @@ body.mobile-navigation-open{overflow:hidden}
 @media(max-width:760px){.brand-wordmark{width:162px;height:49px}}
 @media(max-width:560px){.brand-wordmark{width:148px;height:49px}}
 
-.brand-wordmark{overflow:hidden;isolation:isolate;filter:brightness(1.07) drop-shadow(0 0 8px #e9d5ad99)}
+.brand-wordmark{overflow:hidden;isolation:isolate;filter:brightness(1.07) drop-shadow(0 0 8px #e9d5ad99);transition:filter .28s ease}
+.brand-wordmark:hover{filter:brightness(1.07) drop-shadow(0 0 15px #e9d5adcc) drop-shadow(0 0 28px #e9d5ad77)}
 
 
