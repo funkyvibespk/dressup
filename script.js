@@ -189,7 +189,7 @@ document.querySelector('#newsletter-form').addEventListener('submit',async e=>{
         email:address,
         _subject:'DressUp | New newsletter subscriber',
         _template:'box',
-        message:`Please add ${address} to the DressUp newsletter.`
+        message:`Subscription Form: ${address}\n\nPlease add ${address} to the DressUp newsletter.`
       })
     });
     const result=await response.json();
@@ -218,7 +218,7 @@ document.querySelector('#contact-form').addEventListener('submit',async e=>{
         phone:data.phone||'Not provided',
         _subject:'New message from the DressUp contact form',
         _template:'box',
-        message:data.comment||'No comment provided.'
+        message:`Contact Form: ${data.comment||'No comment provided.'}`
       })
     });
     const result=await response.json();
