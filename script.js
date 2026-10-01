@@ -194,7 +194,7 @@ document.querySelector('#newsletter-form').addEventListener('submit',async e=>{
     });
     const result=await response.json();
     if(!response.ok||result.success===false)throw new Error(result.message||'Unable to send subscription');
-    note.textContent='Thank you — your subscription request was sent. If this is the first one, confirm the activation email in the DressUp inbox.';
+    note.textContent='Thank you! Your request is on its way.';
     form.reset();
   }catch(error){note.textContent='We couldn’t send that just now. Please try again shortly.'}
   finally{button.disabled=false}
