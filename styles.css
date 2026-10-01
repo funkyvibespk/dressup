@@ -418,4 +418,9 @@ body.mobile-navigation-open{overflow:hidden}
   .search-panel .search-close{top:calc(env(safe-area-inset-top,0px) + 14px);right:5%;z-index:3}
   .modal-backdrop{z-index:90}
   .product-modal{z-index:91}
+  .bag-shade{z-index:92}
+  .bag-drawer{z-index:93;width:100%;padding:calc(env(safe-area-inset-top,0px) + 22px) 22px max(22px,env(safe-area-inset-bottom,0px))}
+  .checkout-open{overflow:hidden}
+  .checkout-modal{z-index:93;inset:0;top:0;left:0;transform:none;width:100%;max-width:none;max-height:100vh;max-height:100dvh;padding:calc(env(safe-area-inset-top,0px) + 60px) 22px max(24px,env(safe-area-inset-bottom,0px));border:0;border-radius:0;background:rgba(245,239,230,.98)}
+  .checkout-modal .checkout-close{top:calc(env(safe-area-inset-top,0px) + 14px);right:5%}
 }
