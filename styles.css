@@ -288,3 +288,9 @@ body.mobile-navigation-open{overflow:hidden}
 .brand-plaque .flourish{z-index:2}
 .footer-logo{display:inline-block;position:relative;width:200px;height:68px;overflow:hidden;vertical-align:middle}
 .footer-logo img{position:absolute;top:50%;left:50%;width:288px;height:288px;max-width:none;transform:translate(-50%,-50%);filter:brightness(0) invert(1)}
+
+/* Keep the header wordmark transparent and in its original warm brown. */
+.brand-wordmark{display:flex;align-items:center;justify-content:center;position:relative;width:174px;height:62px;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
+.brand-wordmark .brand-logo{display:block;width:100%;height:100%;object-fit:contain;max-width:none}
+@media(max-width:760px){.brand-wordmark{width:162px;height:49px}}
+@media(max-width:560px){.brand-wordmark{width:148px;height:49px}}
