@@ -604,7 +604,8 @@ body.mobile-navigation-open{overflow:hidden}
 .contact-modal input:focus,.contact-modal textarea:focus{border-color:#9c8056;background:rgba(255,255,255,.72);box-shadow:0 0 0 3px rgba(156,128,86,.13);outline:0}
 .contact-modal .contact-submit{display:inline-flex;align-items:center;justify-content:center;gap:16px;justify-self:start;width:auto;height:48px;padding:0 28px;border:1px solid #29251f;border-radius:999px;background:#29251f;color:#f8f2e8;font-size:12px;letter-spacing:.08em;transition:background-color .2s,color .2s,transform .2s}
 .contact-modal .contact-submit:hover{background:#aa8b5f;border-color:#aa8b5f;color:#201d19;transform:translateY(-1px)}
-.contact-modal .contact-email{margin-top:20px}
+.contact-form-note{grid-column:1/-1;margin:0;color:#756247;font-size:13px;line-height:1.5}
+.contact-form-note[hidden]{display:none}
 @media(max-width:560px){
   .contact-modal form{grid-template-columns:1fr;gap:12px;margin-top:20px}
   .contact-modal .contact-full-field{grid-column:auto}

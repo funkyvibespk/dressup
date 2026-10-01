@@ -203,7 +203,31 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeProduct();clos
 paintProducts();paintCart();
 document.querySelectorAll('[data-category-link]').forEach(link=>link.addEventListener('click',()=>{const category=link.dataset.categoryLink;currentCategory=category;searchTerm='';document.querySelectorAll('.category-tab').forEach(tab=>{const selected=tab.dataset.category===category;tab.classList.toggle('selected',selected);tab.setAttribute('aria-selected',String(selected))});paintProducts();document.querySelector('#collections').scrollIntoView({behavior:'smooth'});document.querySelector('.nav-glass').classList.remove('mobile-open')}));
 const contentBackdrop=document.querySelector('.content-backdrop');let openContent=null;function closeContentModal(){if(openContent)openContent.hidden=true;openContent=null;contentBackdrop.hidden=true;document.body.classList.remove('modal-open')}document.querySelectorAll('[data-content-modal]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();openContent=document.querySelector(link.dataset.contentModal==='shipping'?'.content-modal:not(.contact-modal)':' .contact-modal'.trim());if(!openContent)return;contentBackdrop.hidden=false;openContent.hidden=false;document.body.classList.add('modal-open')}));document.querySelectorAll('.content-close').forEach(button=>button.addEventListener('click',closeContentModal));contentBackdrop.addEventListener('click',closeContentModal);
-document.querySelector('#contact-form').addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));const body=`Name: ${data.name||'Not provided'}\nEmail: ${data.email}\nPhone: ${data.phone||'Not provided'}\n\n${data.comment||''}`;window.location.href=`mailto:funkyvibespk@gmail.com?subject=${encodeURIComponent('DressUp contact form')}&body=${encodeURIComponent(body)}`});
+document.querySelector('#contact-form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const form=e.currentTarget,data=Object.fromEntries(new FormData(form)),button=form.querySelector('.contact-submit'),note=form.querySelector('.contact-form-note');
+  button.disabled=true;button.innerHTML='Sending…';note.hidden=false;note.textContent='Sending your message…';
+  try{
+    const response=await fetch('https://formsubmit.co/ajax/funkyvibespk@gmail.com',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        name:data.name.trim()||'DressUp customer',
+        email:data.email,
+        _replyto:data.email,
+        phone:data.phone||'Not provided',
+        _subject:'New message from the DressUp contact form',
+        _template:'box',
+        message:data.comment||'No comment provided.'
+      })
+    });
+    const result=await response.json();
+    if(!response.ok||result.success===false)throw new Error(result.message||'Unable to send the contact form');
+    note.textContent='Thank you! Your message has been sent to DressUp.';
+    form.reset();
+  }catch(error){note.textContent='We couldn’t send your message just now. Please try again.'}
+  finally{button.disabled=false;button.innerHTML='Send <span aria-hidden="true">↗</span>'}
+});
 const phoneField=document.querySelector('#order-form input[name="phone"]');phoneField.addEventListener('input',()=>phoneField.setCustomValidity(''));phoneField.addEventListener('invalid',()=>phoneField.setCustomValidity('Invalid mobile number. Enter 11 digits using one of the accepted network prefixes.'));
 const backToTop=document.querySelector('.back-to-top');function updateBackToTop(){backToTop.classList.toggle('is-visible',window.scrollY>360)}window.addEventListener('scroll',updateBackToTop,{passive:true});backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));updateBackToTop();(() => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
