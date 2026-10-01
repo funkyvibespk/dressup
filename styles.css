@@ -555,6 +555,7 @@ body.mobile-navigation-open{overflow:hidden}
   .story-copy .eyebrow{font-size:18px}
   .story-copy>p:not(.eyebrow){font-size:20px;line-height:1.7;color:#776b5c}
   .story-copy .story-link{font-size:20px}
+  .promise .eyebrow{font-size:18px}
 }
 .shop-note,.collection-desc{display:none!important}
 .story-copy .eyebrow,.newsletter>.eyebrow,.promise .eyebrow{letter-spacing:.12em}
