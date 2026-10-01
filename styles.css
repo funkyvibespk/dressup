@@ -620,3 +620,17 @@ body.mobile-navigation-open{overflow:hidden}
 .contact-modal input,.contact-modal textarea{border-color:rgba(160,140,111,.52);background:rgba(255,255,255,.36);box-shadow:inset 0 1px 0 rgba(255,255,255,.72)}
 .contact-modal input:focus,.contact-modal textarea:focus{background:rgba(255,255,255,.62)}
 @media(max-width:560px){.contact-modal{border-radius:20px}.contact-modal::before,.contact-modal::after{font-size:34px}.contact-modal form{padding:16px;border-radius:20px}}
+
+/* Product sale prices: 40% off across listings, search, cart, and checkout. */
+.price{display:flex;flex-direction:column;align-items:flex-end;gap:1px;padding-top:2px;white-space:nowrap;line-height:1.2}
+.price del,.search-price del,.modal-price del,.bag-row-prices del,.bag-row p del,.checkout-item-prices del{color:#8e8376;font-size:.78em;font-weight:400}
+.price .sale-price,.search-price>strong,.modal-price .sale-price,.bag-row .sale-price,.bag-row-prices .sale-price,.checkout-item-prices>b{color:#a43d32;font-weight:700}
+.sale-badge,.price .sale-badge{display:inline-block;color:#a43d32;background:#a43d3212;border:1px solid #a43d3233;border-radius:2px;padding:2px 4px;font:700 7px/1 var(--sans);letter-spacing:.04em;white-space:nowrap}
+.search-price{display:flex;align-items:baseline;gap:5px;flex-wrap:wrap;font-size:9px}
+.search-price>b{color:#a43d32;font-size:8px;letter-spacing:.04em}
+.modal-price{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.modal-price .sale-price{font-size:1.06em}
+.bag-row-prices,.checkout-item-prices{display:grid;justify-items:end;gap:3px;white-space:nowrap}
+.bag-row-prices,.bag-row-prices strong{font-size:11px}
+.checkout-item-prices{font-size:11px}
+@media(max-width:560px){.price{font-size:10px}.price .sale-badge{font-size:6px}.search-price{gap:4px}.bag-row-prices,.bag-row-prices strong,.checkout-item-prices{font-size:9px}.modal-price{gap:7px}}
